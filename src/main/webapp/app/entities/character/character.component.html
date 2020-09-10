@@ -1,0 +1,67 @@
+<div>
+    <h2 id="page-heading">
+        <span>Characters</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-character" [routerLink]="['/character/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Character
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="characters?.length === 0">
+        <span>No characters found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="characters?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Name</span></th>
+                    <th scope="col" ><span>Base Attack</span></th>
+                    <th scope="col" ><span>User</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let character of characters ;trackBy: trackId">
+                    <td><a [routerLink]="['/character', character.id, 'view']">{{ character.id }}</a></td>
+                    <td>{{ character.name }}</td>
+                    <td>{{ character.baseAttack }}</td>
+                    <td>
+                        {{ character.user?.id }}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/character', character.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/character', character.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(character)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

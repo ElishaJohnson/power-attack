@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="weapon">
+            <h2><span>Weapon</span> {{ weapon.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{ weapon.name }}</span>
+                </dd>
+                <dt><span>Attack Modifier</span></dt>
+                <dd>
+                    <span>{{ weapon.attackModifier }}</span>
+                </dd>
+                <dt><span>Crit Chance</span></dt>
+                <dd>
+                    <span>{{ weapon.critChance }}</span>
+                </dd>
+                <dt><span>Crit Damage</span></dt>
+                <dd>
+                    <span>{{ weapon.critDamage }}</span>
+                </dd>
+                <dt><span>Die Value</span></dt>
+                <dd>
+                    <span>{{ weapon.dieValue }}</span>
+                </dd>
+                <dt><span>Dice Count</span></dt>
+                <dd>
+                    <span>{{ weapon.diceCount }}</span>
+                </dd>
+                <dt><span>Damage Bonus</span></dt>
+                <dd>
+                    <span>{{ weapon.damageBonus }}</span>
+                </dd>
+                <dt><span>Character</span></dt>
+                <dd>
+                    <div *ngIf="weapon.character">
+                        <a [routerLink]="['/character', weapon.character?.id, 'view']">{{ weapon.character?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/weapon', weapon.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

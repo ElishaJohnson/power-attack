@@ -1,0 +1,170 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-weapon-heading">Create or edit a Weapon</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_attackModifier">Attack Modifier</label>
+                    <input type="number" class="form-control" name="attackModifier" id="field_attackModifier"
+                           formControlName="attackModifier"/>
+                    <div *ngIf="editForm.get('attackModifier')!.invalid && (editForm.get('attackModifier')!.dirty || editForm.get('attackModifier')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('attackModifier')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('attackModifier')?.errors?.max">
+                            This field cannot be more than 100.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('attackModifier')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_critChance">Crit Chance</label>
+                    <input type="number" class="form-control" name="critChance" id="field_critChance"
+                           formControlName="critChance"/>
+                    <div *ngIf="editForm.get('critChance')!.invalid && (editForm.get('critChance')!.dirty || editForm.get('critChance')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('critChance')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('critChance')?.errors?.max">
+                            This field cannot be more than 100.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('critChance')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_critDamage">Crit Damage</label>
+                    <input type="number" class="form-control" name="critDamage" id="field_critDamage"
+                           formControlName="critDamage"/>
+                    <div *ngIf="editForm.get('critDamage')!.invalid && (editForm.get('critDamage')!.dirty || editForm.get('critDamage')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('critDamage')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('critDamage')?.errors?.max">
+                            This field cannot be more than 100.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('critDamage')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dieValue">Die Value</label>
+                    <input type="number" class="form-control" name="dieValue" id="field_dieValue"
+                           formControlName="dieValue"/>
+                    <div *ngIf="editForm.get('dieValue')!.invalid && (editForm.get('dieValue')!.dirty || editForm.get('dieValue')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dieValue')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dieValue')?.errors?.max">
+                            This field cannot be more than 100.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('dieValue')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_diceCount">Dice Count</label>
+                    <input type="number" class="form-control" name="diceCount" id="field_diceCount"
+                           formControlName="diceCount"/>
+                    <div *ngIf="editForm.get('diceCount')!.invalid && (editForm.get('diceCount')!.dirty || editForm.get('diceCount')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('diceCount')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('diceCount')?.errors?.max">
+                            This field cannot be more than 100.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('diceCount')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_damageBonus">Damage Bonus</label>
+                    <input type="number" class="form-control" name="damageBonus" id="field_damageBonus"
+                           formControlName="damageBonus"/>
+                    <div *ngIf="editForm.get('damageBonus')!.invalid && (editForm.get('damageBonus')!.dirty || editForm.get('damageBonus')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('damageBonus')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('damageBonus')?.errors?.max">
+                            This field cannot be more than 100.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('damageBonus')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_character">Character</label>
+                    <select class="form-control" id="field_character" name="character" formControlName="character">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="characterOption.id === editForm.get('character')!.value?.id ? editForm.get('character')!.value : characterOption" *ngFor="let characterOption of characters; trackBy: trackById">{{ characterOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

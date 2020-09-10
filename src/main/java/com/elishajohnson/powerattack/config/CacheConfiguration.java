@@ -42,6 +42,14 @@ public class CacheConfiguration {
             createCache(cm, com.elishajohnson.powerattack.domain.User.class.getName());
             createCache(cm, com.elishajohnson.powerattack.domain.Authority.class.getName());
             createCache(cm, com.elishajohnson.powerattack.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.elishajohnson.powerattack.domain.Character.class.getName());
+            createCache(cm, com.elishajohnson.powerattack.domain.Character.class.getName() + ".weapons");
+            createCache(cm, com.elishajohnson.powerattack.domain.Character.class.getName() + ".attackCycles");
+            createCache(cm, com.elishajohnson.powerattack.domain.AttackCycle.class.getName());
+            createCache(cm, com.elishajohnson.powerattack.domain.AttackCycle.class.getName() + ".attacks");
+            createCache(cm, com.elishajohnson.powerattack.domain.Weapon.class.getName());
+            createCache(cm, com.elishajohnson.powerattack.domain.Attack.class.getName());
+            createCache(cm, com.elishajohnson.powerattack.domain.Attack.class.getName() + ".attackCycles");
             // jhipster-needle-ehcache-add-entry
         };
     }

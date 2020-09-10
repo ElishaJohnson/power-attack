@@ -1,0 +1,49 @@
+entity Character {
+	name String required maxlength(50),
+	baseAttack Integer required max(100)
+}
+
+entity AttackCycle {
+	name String required maxlength(50)
+}
+
+entity Weapon {
+	name String required maxlength(50),
+	attackModifier Integer required max(100),
+	critChance Integer required max(100),
+	critDamage Integer required max(100),
+	dieValue Integer required max(100),
+	diceCount Integer required max(100),
+	damageBonus Integer required max(100)
+}
+
+entity Attack {
+	name String required maxlength(50),
+	attackModifier Integer required max(100),
+	critChance Integer required max(100),
+	critDamage Integer required max(100),
+	dieValue Integer required max(100),
+	diceCount Integer required max(100),
+	damageBonus Integer required max(100)
+}
+
+relationship ManyToOne {
+	Character{user} to User
+}
+
+relationship OneToMany {
+	Character{weapon} to Weapon
+}
+
+relationship OneToMany {
+	Character{attackCycle} to AttackCycle
+}
+
+relationship ManyToOne {
+	Attack{weapon} to Weapon
+}
+
+relationship ManyToMany {
+	AttackCycle{attack} to Attack{attackCycle}
+}
+

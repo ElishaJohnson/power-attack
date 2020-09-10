@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="attackCycle">
+            <h2><span>Attack Cycle</span> {{ attackCycle.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{ attackCycle.name }}</span>
+                </dd>
+                <dt><span>Attack</span></dt>
+                <dd>
+                    <span *ngFor="let attack of attackCycle.attacks; let last = last">
+                        <a [routerLink]="['/attack', attack?.id, 'view']">{{ attack.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span>Character</span></dt>
+                <dd>
+                    <div *ngIf="attackCycle.character">
+                        <a [routerLink]="['/character', attackCycle.character?.id, 'view']">{{ attackCycle.character?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/attack-cycle', attackCycle.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+{
+    "name": "AttackCycle",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "attack",
+            "otherEntityRelationshipName": "attackCycle",
+            "relationshipName": "attack",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "character",
+            "otherEntityRelationshipName": "attackCycle",
+            "relationshipName": "character",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200910215000",
+    "entityTableName": "attack_cycle",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
