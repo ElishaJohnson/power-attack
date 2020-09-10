@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.elishajohnson.powerattack"
+    },
+    "jhipsterVersion": "6.7.1",
+    "applicationType": "monolith",
+    "baseName": "powerattack",
+    "packageName": "com.elishajohnson.powerattack",
+    "packageFolder": "com/elishajohnson/powerattack",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "gradle",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NWZjNzFjOTEyNDA5NTczNjQ5ZjFmODNlZjFlMjI2NzcyNzZkOWYyZDcyYTRhZGI1ODMxNzIxOGJiN2VmN2M5YTVlNmY3NWRlNThjNDMwODM0MTk2NjA0YTI5YjM2OTdmNmRjY2EwODhmMjQ2NDVhMDhmYThmZGUzOWM2ZGYxOWI=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "cyborg",
+    "clientThemeVariant": "dark",
+    "creationTimestamp": 1599773202143,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}
