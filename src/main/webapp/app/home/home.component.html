@@ -9,12 +9,23 @@
         <p class="lead">This is your homepage</p>
 
         <div [ngSwitch]="isAuthenticated()">
-            <div class="alert alert-success" *ngSwitchCase="true">
-                <span id="home-logged-message" *ngIf="account">You are logged in as user "{{ account.login }}".</span>
+            <div *ngSwitchCase="true">
+                <div class="alert alert-success">
+                    <span id="home-logged-message" *ngIf="account">You are logged in as user "{{ account.login }}".</span>
+                </div>
+
+                <!-- display a list of current user's characters -->
+                <ul>
+                    <span *ngFor="let character of characters">
+                        <li *ngIf="account.login === character.user.login">{{ character.name }}</li>
+                    </span>
+                </ul>
             </div>
 
-            <!-- automatically redirect to login if not logged in -->
-            <div *ngSwitchCase="false">{{ login() }}</div>
+            <!-- automatically redirect to login if not authenticated when characters are loaded -->
+            <div *ngSwitchCase="false">
+                <span *ngIf="characters">{{ login() }}</span>
+            </div>
         </div>
 
     </div>
