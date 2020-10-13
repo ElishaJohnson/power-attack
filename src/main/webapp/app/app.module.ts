@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import './vendor';
 import { PowerattackSharedModule } from 'app/shared/shared.module';
@@ -17,6 +18,7 @@ import { ErrorComponent } from './layouts/error/error.component';
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
     PowerattackSharedModule,
     PowerattackCoreModule,
     PowerattackHomeModule,
