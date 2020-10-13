@@ -14,12 +14,17 @@
                     <span id="home-logged-message" *ngIf="account">You are logged in as user "{{ account.login }}".</span>
                 </div>
 
-                <!-- display a list of current user's characters -->
-                <ul>
-                    <span *ngFor="let character of characters">
-                        <li *ngIf="account.login === character.user.login">{{ character.name }}</li>
-                    </span>
-                </ul>
+                <ng-container *ngIf="characters">
+                    <span>Select a character: </span>
+
+                    <select [(ngModel)]="selectedCharacter">
+                        <option *ngFor="let character of characters" [ngValue]="character"> {{ character.name }}</option>
+                    </select>
+
+                    <br>
+                    <p>Character selected: {{ selectedCharacter.name }}</p>
+                </ng-container>
+
             </div>
 
             <!-- automatically redirect to login if not authenticated when characters are loaded -->

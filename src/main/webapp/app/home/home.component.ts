@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   account: Account | null = null;
   authSubscription?: Subscription;
   characters?: ICharacter[];
+  selectedCharacter: ICharacter | null = null;
 
   constructor(
     private accountService: AccountService,
