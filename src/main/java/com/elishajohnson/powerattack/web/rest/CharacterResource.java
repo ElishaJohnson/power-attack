@@ -3,6 +3,7 @@ package com.elishajohnson.powerattack.web.rest;
 import com.elishajohnson.powerattack.domain.Character;
 import com.elishajohnson.powerattack.repository.CharacterRepository;
 import com.elishajohnson.powerattack.web.rest.errors.BadRequestAlertException;
+import com.elishajohnson.powerattack.security.SecurityUtils;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -88,7 +90,21 @@ public class CharacterResource {
     @GetMapping("/characters")
     public List<Character> getAllCharacters() {
         log.debug("REST request to get all Characters");
-        return characterRepository.findAll();
+        List<Character> characterList = characterRepository.findAll();
+        List<Character> filteredCharacterList = new ArrayList<>();
+        Optional<String> currentUser = SecurityUtils.getCurrentUserLogin();
+
+        // return only current user's characters unless otherwise authorized
+        if (currentUser.get().equals("admin") || currentUser.get().equals("system") || currentUser.get().equals("anonymoususer")) {
+            return characterList;
+        } else {
+            for (int i = 0; i < characterList.size(); i++) {
+                if (currentUser.get().equals(characterList.get(i).getUser().getLogin())) {
+                    filteredCharacterList.add(characterList.get(i));
+                }
+            }
+            return filteredCharacterList;
+        }
     }
 
     /**
