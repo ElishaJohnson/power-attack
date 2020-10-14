@@ -10,11 +10,14 @@
 
         <div [ngSwitch]="isAuthenticated()">
             <div *ngSwitchCase="true">
+                <!-- without the following line the page renders with no character menu: -->
+                <ng-container *ngIf="!characters || characters?.length === 0">{{ loadAll() }}</ng-container>
                 <div class="alert alert-success">
                     <span id="home-logged-message" *ngIf="account">You are logged in as user "{{ account.login }}".</span>
                 </div>
 
-                <ng-container *ngIf="characters">
+                <!-- menu of user's characters -->
+                <div *ngIf="characters?.length > 0">
                     <span>Select a character: </span>
 
                     <select [(ngModel)]="selectedCharacter">
@@ -23,7 +26,7 @@
 
                     <br>
                     <p>Character selected: {{ selectedCharacter.name }}</p>
-                </ng-container>
+                </div>
 
             </div>
 
